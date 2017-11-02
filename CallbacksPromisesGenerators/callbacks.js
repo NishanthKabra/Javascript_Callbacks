@@ -1,13 +1,11 @@
-var $status = $('#status');
 var bestFriendId = 1;
 
-//get Friends, then best friend latest post, hashtags in them
+//get all Friends - > get your best friend's latest post -> get hashtags of that post
 $.ajax({
     type:'GET',
     url: 'friends.json',
     dataType: 'json',
     success: function(friends){
-        console.log(friends);
         $('#list-of-friends').html(JSON.stringify(friends));
         //Get Best Friends Posts
         $.ajax({
@@ -15,7 +13,6 @@ $.ajax({
             url:'posts.json',
             datatype:'json',
             success: function(allPosts){
-                console.log(allPosts);
                 var bestFriendsPosts = getFriendsPosts(bestFriendId, allPosts);
                 $('#best-friend').html(JSON.stringify(bestFriendsPosts));
                 //Get bests friends latest posts hashtags
@@ -24,23 +21,22 @@ $.ajax({
                     url:'hashtags.json',
                     dataType:'json',
                     success: function(allHashTags){
-                        console.log(allHashTags);
                         var bestFriendsLatestPostsHashTagIds = bestFriendsPosts.posts[0]['hashTags'];
                         var bestFriendHashTags = getHashTags(bestFriendsLatestPostsHashTagIds, allHashTags);
                         $('#best-friend-latest-post-hashtags').html(JSON.stringify(bestFriendHashTags));
                     },
                    error: function(err){
-                        $status.append('<li>error:'+err.toString()+'</li>');
+                        $('#status').append('<li>error:'+err.toString()+'</li>');
                     }
                 });
             },
             error: function(err){
-                $status.append('<li>error:'+err.toString()+'</li>');
+                $('#status').append('<li>error:'+err.toString()+'</li>');
             }
         });
     },
     error: function(xhr, status, err){
-        $status.append('<li>error:' + err.toString() + '</li>');
+        $('#status').append('<li>error:' + err.toString() + '</li>');
     }
 });
 

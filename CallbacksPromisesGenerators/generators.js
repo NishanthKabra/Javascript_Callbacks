@@ -1,11 +1,9 @@
-//GENERATORS ARE AWESOME!!!!
-//use with Traceur: https://github.com/google/traceur-compiler
-//find out how this works: look at what-are-generators.js
-var $status = $('#status');
+//Generators are cool!!!!
 var bestFriendId = 1;
 
+//get all Friends - > get your best friend's latest post -> get hashtags of that post
+
 Promise.coroutine(function* () {
-  
   var allFriends = yield $.get('friends.json');
   $('#list-of-friends').html(JSON.stringify(allFriends));
   
@@ -19,7 +17,7 @@ Promise.coroutine(function* () {
   $('#best-friend-latest-post-hashtags').html(JSON.stringify(bestFriendHashTags));
   
 })().catch(function(errs) {
-  $status.append('<li>error:'+errs.toString()+'</li>');
+  $('#status').append('<li>error:'+errs.toString()+'</li>');
 })
 
 var getFriendsPosts = function(id, allPosts){

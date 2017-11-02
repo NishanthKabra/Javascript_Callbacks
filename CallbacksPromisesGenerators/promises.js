@@ -1,5 +1,6 @@
-var $status = $('#status');
 var bestFriendId = 1;
+
+//get all Friends - > get your best friend's latest post -> get hashtags of that post
 
 var getAllFriends = $.ajax({type: 'GET', url: 'friends.json'});
 var getAllPosts = $.ajax({type: 'GET', url: 'posts.json'});
@@ -19,7 +20,7 @@ getAllFriends.then(function(friends){
 }, errorHandler);
 
 function errorHandler(xhr, status, error) {
-  $status.append('<li>error:'+error.toString()+'</li>');
+  $('#status').append('<li>error:'+error.toString()+'</li>');
 };
 
 var getFriendsPosts = function(id, allPosts){
