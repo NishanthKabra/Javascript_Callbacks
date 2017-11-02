@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script data-require="jquery@3.0.0" data-semver="3.0.0" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <!--Needed for ES6-->
+        <!--<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+        <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+        <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>-->
+        <script src="https://cdn.jsdelivr.net/bluebird/latest/bluebird.js"></script>
+        
+    </head>
+    <body>
+    <h1>Javascript ASync Fun!</h1>
+    <ul id="status"></ul>
+    
+    <h4>Facebook Friends</h4>
+    <pre id="list-of-friends"></pre>
+    <h4>Best Friend Posts</h4>
+    <pre id="best-friend"></pre>
+    <h4>Best Friend Latest Posts HashTags</h4>
+    <pre id="best-friend-latest-post-hashtags"></pre>
+    
+    <!-- different ways of doing the same thing -->
+    <!--<script src="./callbacks.js"></script> -->
+    <!--<script src="namedcallbacks.js"></script> -->
+     <!--<script src="promises.js"></script> -->
+     <script src="./generators.js"></script> 
+
+     <!--<script>
+        window.System = new traceur.runtime.BrowserTraceurLoader();
+        System.import('./generators.js');
+    </script>-->
+  </body>
+
+</html>
+
+
+<!--https://www.youtube.com/watch?v=pTbSfCT42_M-->
+<!--http://plnkr.co/edit/1ArvFxI0gWmajTpDaOSB?p=preview-->

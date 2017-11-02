@@ -1,0 +1,44 @@
+[
+    {
+        "userid": 1,
+        "posts":
+         [
+            {   
+                "id": 1,
+                "postMessage": "Cashless economy way forward",
+                "time": "20 Aug 2017",
+                "hashTags" : [1,3]
+            },
+            {
+                "id": 2,
+                "postMessage": "Demonitization, a bigger step toeards better ecomony",
+                "time": "20 Aug 2017",
+                "hashTags" : [1,3]
+            }
+         ]
+    },
+    {
+        "userid": 2,
+        "posts":
+         [
+            {   
+                "id": 1,
+                "postMessage": "Our rivers are drying please call at 8000980009 to support SaveRivers movement",
+                "time": "20 Sep 2017",
+                "hashTags" : [2]
+            }
+         ]
+    },
+    {
+        "userid": 3,
+        "posts":
+         [
+            {   
+                "id": 1,
+                "postMessage": "Working on Iot with Node Js",
+                "time": "20 Sep 2017",
+                "hashTags" : [4]
+            }
+         ]
+    }
+]
