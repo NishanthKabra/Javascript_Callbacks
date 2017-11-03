@@ -5,14 +5,14 @@ var bestFriendId = 1;
 
 $.ajax({
     type:'GET',
-    url: 'friends.json',
+    url: 'data_friends.json',
     dataType: 'json',
     success: function(friends){
         $('#list-of-friends').html(JSON.stringify(friends));
         //Get Best Friends Posts
         $.ajax({
             type:'GET',
-            url:'posts.json',
+            url:'data_posts.json',
             datatype:'json',
             success: getBestFriendsLatestPosts,
             error: errorHandler
@@ -27,7 +27,7 @@ var getBestFriendsLatestPosts = function(allPosts){
         //Get bests friends latest posts hashtags
         $.ajax({
             type:'GET',
-            url:'hashtags.json',
+            url:'data_hashtags.json',
             dataType:'json',
             success: function(allHashTags){
                 var bestFriendsLatestPostsHashTagIds = bestFriendsPosts.posts[0]['hashTags'];

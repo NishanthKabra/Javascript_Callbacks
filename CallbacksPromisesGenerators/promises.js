@@ -2,9 +2,9 @@ var bestFriendId = 1;
 
 //get all Friends - > get your best friend's latest post -> get hashtags of that post
 
-var getAllFriends = $.ajax({type: 'GET', url: 'friends.json'});
-var getAllPosts = $.ajax({type: 'GET', url: 'posts.json'});
-var getAllHashTags =  $.ajax({type: 'GET', url: 'hashtags.json'});
+var getAllFriends = $.ajax({type: 'GET', url: 'data_friends.json'});
+var getAllPosts = $.ajax({type: 'GET', url: 'data_posts.json'});
+var getAllHashTags =  $.ajax({type: 'GET', url: 'data_hashtags.json'});
 
 getAllFriends.then(function(friends){
     $('#list-of-friends').html(JSON.stringify(friends));

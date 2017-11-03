@@ -3,14 +3,14 @@ var bestFriendId = 1;
 //get all Friends - > get your best friend's latest post -> get hashtags of that post
 $.ajax({
     type:'GET',
-    url: 'friends.json',
+    url: 'data_friends.json',
     dataType: 'json',
     success: function(friends){
         $('#list-of-friends').html(JSON.stringify(friends));
         //Get Best Friends Posts
         $.ajax({
             type:'GET',
-            url:'posts.json',
+            url:'data_posts.json',
             datatype:'json',
             success: function(allPosts){
                 var bestFriendsPosts = getFriendsPosts(bestFriendId, allPosts);
@@ -18,14 +18,14 @@ $.ajax({
                 //Get bests friends latest posts hashtags
                 $.ajax({
                     type:'GET',
-                    url:'hashtags.json',
+                    url:'data_hashtags.json',
                     dataType:'json',
                     success: function(allHashTags){
                         var bestFriendsLatestPostsHashTagIds = bestFriendsPosts.posts[0]['hashTags'];
                         var bestFriendHashTags = getHashTags(bestFriendsLatestPostsHashTagIds, allHashTags);
                         $('#best-friend-latest-post-hashtags').html(JSON.stringify(bestFriendHashTags));
                     },
-                   error: function(err){
+                    error: function(err){
                         $('#status').append('<li>error:'+err.toString()+'</li>');
                     }
                 });

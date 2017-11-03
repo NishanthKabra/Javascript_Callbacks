@@ -4,21 +4,21 @@ var bestFriendId = 1;
 //get all Friends - > get your best friend's latest post -> get hashtags of that post
 
 Promise.coroutine(function* () {
-  var allFriends = yield $.get('friends.json');
+  var allFriends = yield $.get('data_friends.json');
   $('#list-of-friends').html(JSON.stringify(allFriends));
   
-  var allPosts = yield $.get('posts.json');
+  var allPosts = yield $.get('data_posts.json');
   var bestFriendsPosts = getFriendsPosts(bestFriendId, allPosts);
   var bestFriendsLatestPostsHashTagIds = bestFriendsPosts.posts[0]['hashTags'];
   $('#best-friend').html(JSON.stringify(bestFriendsPosts));
   
-  var allHashTags = yield $.get('hashtags.json');
+  var allHashTags = yield $.get('data_hashtags.json');
   var bestFriendHashTags = getHashTags(bestFriendsLatestPostsHashTagIds, allHashTags);
   $('#best-friend-latest-post-hashtags').html(JSON.stringify(bestFriendHashTags));
   
-})().catch(function(errs) {
-  $('#status').append('<li>error:'+errs.toString()+'</li>');
-})
+})().catch(function(errors) {
+  $('#status').append('<li>error:'+errors.toString()+'</li>');
+});
 
 var getFriendsPosts = function(id, allPosts){
     var friendsPosts;
