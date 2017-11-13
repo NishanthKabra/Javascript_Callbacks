@@ -2,20 +2,24 @@ var bestFriendId = 1;
 
 //get all Friends - > get your best friend's latest post -> get hashtags of that post
 
-var getAllFriends = $.ajax({type: 'GET', url: 'data_friends.json'});
-var getAllPosts = $.ajax({type: 'GET', url: 'data_posts.json'});
-var getAllHashTags =  $.ajax({type: 'GET', url: 'data_hashtags.json'});
+var getAllFriends = $.ajax({type: 'GET', url: 'friends.json'});
+var getAllPosts = $.ajax({type: 'GET', url: 'posts.json'});
+var getAllHashTags =  $.ajax({type: 'GET', url: 'hashtags.json'});
+    var bestFriendsLatestPostsHashTagIds;
 
 getAllFriends.then(function(friends){
     $('#list-of-friends').html(JSON.stringify(friends));
-    getAllPosts.then(function(allPosts){
+}).then(function(){
+    return getAllPosts.then(function(allPosts){
         var bestFriendsPosts = getFriendsPosts(bestFriendId, allPosts);
         $('#best-friend').html(JSON.stringify(bestFriendsPosts));
         var bestFriendsLatestPostsHashTagIds = bestFriendsPosts.posts[0]['hashTags'];
-        getAllHashTags.then(function(allHashTags){
-            var bestFriendHashTags = getHashTags(bestFriendsLatestPostsHashTagIds, allHashTags);
-            $('#best-friend-latest-post-hashtags').html(JSON.stringify(bestFriendHashTags));
-        })
+        return bestFriendsLatestPostsHashTagIds;
+    });
+}).then(function(bestFriendsLatestPostsHashTagIds){
+    getAllHashTags.then(function(allHashTags){
+        var bestFriendHashTags = getHashTags(bestFriendsLatestPostsHashTagIds, allHashTags);
+        $('#best-friend-latest-post-hashtags').html(JSON.stringify(bestFriendHashTags));
     })
 }, errorHandler);
 
@@ -43,3 +47,4 @@ var getHashTags = function(hashTagIds, allHashTags){
     };
     return hashes;
 };
+
